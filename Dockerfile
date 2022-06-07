@@ -3,4 +3,4 @@ COPY ./app /app
 WORKDIR /app
 RUN chmod +x dcompass
 EXPOSE 53/udp
-CMD ./dcompass -c ./config.yaml
+CMD ./dcompass -c ./fly.cloud.yaml

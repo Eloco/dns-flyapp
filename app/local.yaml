@@ -1,0 +1,57 @@
+---
+verbosity: "info"
+address: fly-global-services:53
+table:
+  start:
+    if: "qtype([AAAA])"
+    then:
+      # A list of actions is allowed here
+      - blackhole
+      # The next tag to go
+      - end
+    else:
+      - dispatch
+  dispatch:
+    - query: domestic
+    - check_secure
+  check_secure:
+    if: |
+      geoip(codes: ["CN"])
+    else:
+      - query: secure
+      - end
+
+upstreams:
+  Tencent:
+    udp:
+      addr: 119.29.29.29:53
+
+  114DNS:
+    udp:
+      addr: 114.114.114.114:53
+
+  Ali:
+    udp:
+      addr: 223.6.6.6:53
+
+  domestic:
+    hybrid:
+      - 114DNS
+      - Ali
+
+  cloudflare:
+    https:
+      uri: https://cloudflare-dns.com/dns-query
+      ratelimit: 3000
+      addr: 1.0.0.1
+
+  quad9:
+    https:
+      uri: https://quad9.net/dns-query
+      ratelimit: 3000
+      addr: 9.9.9.9
+
+  secure:
+    hybrid:
+      - cloudflare
+      - quad9
