@@ -9,4 +9,6 @@ else
     echo not found
 fi
 
+head dcompass.yaml
+
 ./dcompass -c ./dcompass.yaml
