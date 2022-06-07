@@ -42,7 +42,7 @@ table:
     then:
       - end
     else:
-  # [4] final use adguard to query
+  # [5] final use adguard to query
       - query:
           tag: secure
           cache_policy: standard
