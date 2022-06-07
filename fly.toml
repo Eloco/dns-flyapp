@@ -1,18 +1,18 @@
-# fly.toml file generated for eloco-dns on 2022-06-07T14:18:05+08:00
+# fly.toml file generated for eloco-dns-test on 2022-06-07T22:47:26+08:00
 
-app = "eloco-dns"
+app = "eloco-dns-test"
 
 kill_signal = "SIGTERM"
 kill_timeout = 120
 
 [[services]]
-  internal_port = 53
+  internal_port = 2053
   protocol = "udp"
 
   [services.concurrency]
-    hard_limit = 550
-    soft_limit = 500
+    hard_limit = 55
+    soft_limit = 50
     type = "connections"
 
   [[services.ports]]
-    port = 53
+    port = 2053
