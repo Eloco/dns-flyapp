@@ -1,4 +1,4 @@
-FROM ghcr.io/linuxserver/baseimage-ubuntu:focal
+FROM alpine:3.6
 COPY ./app /app
 WORKDIR /app
 RUN chmod +x dcompass
