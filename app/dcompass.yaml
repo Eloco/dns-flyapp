@@ -12,7 +12,7 @@ table:
       - end
     else:
       - blocklist
-  # [2] ban all the blocklist.txt[dynamic generate]
+  # [2] ban all the blocklist.txt[dynamic generate from blocklist.url]
   blocklist:
     if: domain([file("./blocklist.txt")])
     then:
@@ -20,7 +20,7 @@ table:
       - end
     else:
       - gfw
-  # [3] filter all the blacklist.gz
+  # [3] gfwlist.gz
   gfw:
     if: domain([file("./data/gfwlist.gz")])
     then:
@@ -42,6 +42,7 @@ table:
     then:
       - end
     else:
+  # [4] final use adguard to query
       - query:
           tag: secure
           cache_policy: standard
