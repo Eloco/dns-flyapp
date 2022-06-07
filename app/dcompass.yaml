@@ -21,7 +21,7 @@ table:
     else:
       - query:
           tag: gfw
-          cache_policy: standard
+          #cache_policy: standard
       - end
 
 upstreams:
