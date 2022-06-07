@@ -1,0 +1,3 @@
+fly launch --copy-config  --no-deploy
+#fly secrets set -a app-name FRP_TOKEN=12345678 FRP_DASH_USER=admin FRP_DASH_PWD=admin
+#flyctl certs create "*.xx.com"

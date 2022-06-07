@@ -1,0 +1,18 @@
+# fly.toml file generated for bold-wave-158 on 2022-06-07T14:10:25+08:00
+
+app = "bold-wave-158"
+
+kill_signal = "SIGTERM"
+kill_timeout = 120
+
+[[services]]
+  internal_port = 53
+  protocol = "udp"
+
+  [services.concurrency]
+    hard_limit = 55
+    soft_limit = 50
+    type = "connections"
+
+  [[services.ports]]
+    port = 53
