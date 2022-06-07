@@ -1,0 +1,5 @@
+https://raw.githubusercontent.com/anudeepND/blacklist/master/adservers.txt #广告跟踪
+https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts #广告软件+恶意软件
+https://raw.githubusercontent.com/kboghdady/youTube_ads_4_pi-hole/master/black.list #油管
+https://raw.githubusercontent.com/mhhakim/pihole-blocklist/master/list.txt #广告，跟踪，垃圾邮件，恶意软件
+https://raw.githubusercontent.com/PoorPocketsMcNewHold/steamscamsite/master/steamscamsite.txt #Steam, Dota, CSGO, TF2, PUBG诈骗网站
