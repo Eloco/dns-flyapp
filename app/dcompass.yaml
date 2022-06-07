@@ -1,6 +1,6 @@
 ---
 verbosity: "info"
-address: fly-global-services:53
+address: 0.0.0.0:53
 table:
   start:
     if: "qtype([AAAA])"
@@ -37,6 +37,7 @@ upstreams:
   domestic:
     hybrid:
       - 114DNS
+      - Tencent
       - Ali
 
   cloudflare:
