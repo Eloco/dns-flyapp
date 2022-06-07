@@ -19,72 +19,12 @@ table:
       - blackhole
       - end
     else:
-      - gfw
-  # [3] gfwlist.gz
-  gfw:
-    if: domain([file("./data/gfwlist.gz")])
-    then:
       - query:
           tag: gfw
           cache_policy: standard
       - end
-    else:
-      - dispatch
-  # [4] filter all CN dns
-  dispatch:
-    - query:
-        tag: domestic
-        cache_policy: standard
-    - check_domestic
-  check_domestic:
-    if: |
-      geoip(codes: ["CN"])
-    then:
-      - end
-    else:
-  # [5] final use adguard to query
-      - query:
-          tag: secure
-          cache_policy: standard
-      - end
 
 upstreams:
-
-  AliDoH:
-    https:
-      uri: https://dns.alidns.com/dns-query
-      ratelimit: 3000
-      timeout: 2
-      addr: 223.6.6.6
-
-  TencentDoH:
-    https:
-      uri: https://doh.pub/dns-query
-      ratelimit: 3000
-      timeout: 2
-      addr: 1.12.12.12
-
-  #114DNS:
-  #  udp:
-  #    timeout: 1
-  #    addr: 114.114.114.114:53
-
-  #Ali:
-  #  udp:
-  #    addr: 223.6.6.6:53
-  #
-  #
-  #Tencent:
-  #  udp:
-  #    addr: 119.29.29.29:53
-
-  domestic:
-    hybrid:
-      - AliDoH
-      - TencentDoH
-      #- 114DNS
-
-
   cloudflareDoH:
     https:
       uri: https://cloudflare-dns.com/dns-query
@@ -119,22 +59,3 @@ upstreams:
       - opendnsDoH
       - quad9DoH
       - cloudflareDoH
-
-  adguardDoH:
-    https:
-      uri: https://dns.adguard.com/dns-query
-      ratelimit: 3000
-      timeout: 2
-      addr: 94.140.15.15
-
-  # [CURRENTLY UNSUPPORTED DoT]
-  #adguardDoT:
-  #  tls:
-  #    no_sni: true
-  #    name: dns.adguard.com
-  #    addr: 94.140.14.14:853
-
-  secure:
-    hybrid:
-      #- adguardDoT
-      - adguardDoH
