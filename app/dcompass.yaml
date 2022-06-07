@@ -1,8 +1,8 @@
 ---
-#verbosity: "info"
-verbosity: "trace"
-#address: 0.0.0.0:2053
-address: 0.0.0.0:2053
+verbosity: "info"
+#verbosity: "trace"
+#address: 0.0.0.0:53
+address: 0.0.0.0:53
 table:
   # [1] handle ipv6
   start:
