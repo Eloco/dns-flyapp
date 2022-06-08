@@ -3,7 +3,7 @@ verbosity: "info"
 #verbosity: "trace"
 address: 0.0.0.0:53
 table:
-  # [1] handle ipv6
+  # [*] handle ipv6
   start:
     if: "qtype([AAAA])"
     then:
@@ -13,15 +13,24 @@ table:
       - end
     else:
       - blocklist
-  # [2] ban all the blocklist.txt[dynamic generate from blocklist.url]
+  # [*] ban all the blocklist.txt[dynamic generate from blocklist.url]
   blocklist:
     if: domain([file("./blocklist.txt")])
     then:
       - blackhole
       - end
     else:
+      - custom_cn_force
+  custom_cn_force:
+    if: domain([file("./data/custom_cn.txt")])
+    then:
+      - query:
+          tag: domestic
+          cache_policy: standard
+      - end
+    else:
       - gfw
-  # [3] gfwlist.gz
+  # [*] gfwlist.gz
   gfw:
     if: domain([file("./data/gfwlist.gz")])
     then:
@@ -31,7 +40,7 @@ table:
       - end
     else:
       - dispatch
-  # [4] filter all CN dns
+  # [*] filter all CN dns
   dispatch:
     - query:
         tag: domestic
@@ -43,7 +52,7 @@ table:
     then:
       - end
     else:
-  # [5] final use adguard to query
+  # [*] final use adguard to query
       - query:
           tag: secure
           cache_policy: standard
