@@ -131,7 +131,7 @@ upstreams:
       - googleDoH
       - opendnsDoH
       - quad9DoH
-      #- cloudflareDoH
+      - cloudflareDoH
 
   adguardDoH:
     https:
