@@ -4,8 +4,7 @@ cat /etc/hosts
 
 if [ $PROXY ];then
 	echo "PROXY = $PROXY"
-    awk -v old='#proxy:' -v new='proxy: '${PROXY} '$0==old{$0=new}1' dcompass.yaml
-    awk -v old='#proxy:' -v new='proxy: '${PROXY} '$0==old{$0=new}1' dcompass.yaml > dcompass.yaml.bak 
+    awk -v find="#proxy:" -v repl="proxy: ${PROXY}" '{ while (i=index($0,find))  $0 = substr($0,1,i-1) repl substr($0,i+length(find)) ; print }'  dcompass.yaml > dcompass.yaml.bak
     mv dcompass.yaml.bak dcompass.yaml 
 else
     echo 'PROXY not set'
