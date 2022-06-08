@@ -1,6 +1,6 @@
-# fly.toml file generated for eloco-dns on 2022-06-08T00:44:26+08:00
+# fly.toml file generated for eloco-dns-oversea on 2022-06-08T10:26:19+08:00
 
-app = "eloco-dns"
+app = "eloco-dns-oversea"
 
 kill_signal = "SIGTERM"
 kill_timeout = 120
