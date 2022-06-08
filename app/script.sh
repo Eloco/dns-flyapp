@@ -1,16 +1,14 @@
 #!/bin/sh
 
-for i in `cat blocklist.url | sed -r 's/#[^#?]*$//g'`;do (curl -f  $i | grep '^[0-9a-Z]' | sed 's/0.0.0.0\s*//g' ) >> ./blocklist.txt ; done
-
 cat /etc/hosts
 
-if [ $PROXY ];then
-    export -p
-	echo "PROXY = $PROXY"
-    sed -i 's/#proxy:/proxy: '${PROXY}'/g' dcompass.yaml
-else
-    echo 'PROXY not set'
-fi
+#if [ $PROXY ];then
+#    export -p
+#	echo "PROXY = $PROXY"
+#    sed -i 's/#proxy:/proxy: '${PROXY}'/g' dcompass.yaml
+#else
+#    echo 'PROXY not set'
+#fi
 
 if grep -q 'fly-global-services' /etc/hosts; then
     echo 'found fly-global-services'
@@ -21,5 +19,6 @@ else
 fi
 
 head dcompass.yaml
+grep -i proxy dcompass.yaml
 
 ./dcompass -c ./dcompass.yaml
