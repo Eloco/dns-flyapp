@@ -6,7 +6,7 @@ kill_signal = "SIGTERM"
 kill_timeout = 120
 
 [[services]]
-  internal_port = 53
+  internal_port = 2053
   protocol = "udp"
 
   [services.concurrency]
