@@ -1,5 +1,4 @@
 FROM alpine:3.6
-RUN apk del grep
 RUN apk update && apk add --no-cache curl grep
 EXPOSE 53/udp
 COPY ./app /app
