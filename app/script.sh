@@ -5,6 +5,7 @@ for i in `cat blocklist.url | sed -r 's/#[^#?]*$//g'`;do (curl -f  $i | grep '^[
 cat /etc/hosts
 
 if [ $PROXY ];then
+    export -p
 	echo "PROXY = $PROXY"
     sed -i 's/#proxy:/proxy: '${PROXY}'/g' dcompass.yaml
 else
