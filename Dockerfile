@@ -1,8 +1,8 @@
 FROM alpine:3.6
-RUN apk update && apk add --no-cache wget 
+RUN apk update && apk add --no-cache curl
 EXPOSE 53/udp
 COPY ./app /app
 WORKDIR /app
-RUN wget --no-check-certificate  https://raw.githubusercontent.com/Eloco/hosts/main/blocklist.txt -O blocklist.txt
+RUN curl https://raw.githubusercontent.com/Eloco/hosts/main/blocklist.txt -o blocklist.txt
 RUN chmod +x -R ./
 CMD "./script.sh"
