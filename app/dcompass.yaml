@@ -101,7 +101,6 @@ upstreams:
   #cloudflareDoH:
   #  https:
   #    uri: https://cloudflare-dns.com/dns-query
-  #    #proxy:  
   #    ratelimit: 3000
   #    timeout: 2
   #    addr: 1.0.0.1
