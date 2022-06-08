@@ -91,7 +91,7 @@ upstreams:
   cloudflareDoH:
     https:
       uri: https://cloudflare-dns.com/dns-query
-     #proxy:  
+      #proxy:  
       ratelimit: 3000
       timeout: 2
       addr: 1.0.0.1
@@ -99,7 +99,7 @@ upstreams:
   quad9DoH:
     https:
       uri: https://quad9.net/dns-query
-     #proxy:  
+      #proxy:  
       ratelimit: 3000
       timeout: 2
       addr: 9.9.9.9
@@ -107,7 +107,7 @@ upstreams:
   opendnsDoH:
     https:
       uri: https://doh.opendns.com/dns-query
-     #proxy:  
+      #proxy:  
       ratelimit: 3000
       timeout: 2
       addr: 146.112.41.2
