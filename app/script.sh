@@ -3,9 +3,9 @@
 cat /etc/hosts
 
 if [ $PROXY ];then
-    export -p
 	echo "PROXY = $PROXY"
-    sed -i 's/#proxy:/proxy: '${PROXY}'/g' dcompass.yaml
+    awk -v old='#proxy:' -v new='proxy: '${PROXY} '$0==old{$0=new}1' dcompass.yaml > dcompass.yaml.bak 
+    mv dcompass.yaml.bak dcompass.yaml 
 else
     echo 'PROXY not set'
 fi
