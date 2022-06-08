@@ -1,5 +1,5 @@
 FROM alpine:3.6
-RUN apk update && apk add --no-cache curl grep
+RUN apk update && apk add --no-cache wget 
 EXPOSE 53/udp
 COPY ./app /app
 WORKDIR /app
