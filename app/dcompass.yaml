@@ -51,6 +51,14 @@ table:
 
 upstreams:
 
+  RubyfishDoH:
+    https:
+      uri: https://rubyfish.cn/dns-query
+      #proxy:  
+      ratelimit: 3000
+      timeout: 2
+      addr: 175.24.154.66
+
   AliDoH:
     https:
       uri: https://dns.alidns.com/dns-query
@@ -58,6 +66,7 @@ upstreams:
       ratelimit: 3000
       timeout: 2
       addr: 223.6.6.6
+
 
   TencentDoH:
     https:
@@ -83,18 +92,19 @@ upstreams:
 
   domestic:
     hybrid:
+      - RubyfishDoH
       - AliDoH
       - TencentDoH
       #- 114DNS
 
 
-  cloudflareDoH:
-    https:
-      uri: https://cloudflare-dns.com/dns-query
-      #proxy:  
-      ratelimit: 3000
-      timeout: 2
-      addr: 1.0.0.1
+  #cloudflareDoH:
+  #  https:
+  #    uri: https://cloudflare-dns.com/dns-query
+  #    #proxy:  
+  #    ratelimit: 3000
+  #    timeout: 2
+  #    addr: 1.0.0.1
 
   quad9DoH:
     https:
@@ -125,7 +135,7 @@ upstreams:
       - googleDoH
       - opendnsDoH
       - quad9DoH
-      - cloudflareDoH
+      #- cloudflareDoH
 
   adguardDoH:
     https:
