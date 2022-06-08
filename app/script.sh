@@ -4,6 +4,7 @@ cat /etc/hosts
 
 if [ $PROXY ];then
 	echo "PROXY = $PROXY"
+    awk -v old='#proxy:' -v new='proxy: '${PROXY} '$0==old{$0=new}1' dcompass.yaml
     awk -v old='#proxy:' -v new='proxy: '${PROXY} '$0==old{$0=new}1' dcompass.yaml > dcompass.yaml.bak 
     mv dcompass.yaml.bak dcompass.yaml 
 else
