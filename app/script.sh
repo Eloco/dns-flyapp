@@ -2,13 +2,13 @@
 
 cat /etc/hosts
 
-#if [ $PROXY ];then
-#    export -p
-#	echo "PROXY = $PROXY"
-#    sed -i 's/#proxy:/proxy: '${PROXY}'/g' dcompass.yaml
-#else
-#    echo 'PROXY not set'
-#fi
+if [ $PROXY ];then
+    export -p
+	echo "PROXY = $PROXY"
+    sed -i 's/#proxy:/proxy: '${PROXY}'/g' dcompass.yaml
+else
+    echo 'PROXY not set'
+fi
 
 if grep -q 'fly-global-services' /etc/hosts; then
     echo 'found fly-global-services'
