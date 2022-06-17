@@ -64,33 +64,33 @@ table:
 
 upstreams:
 
-  GoogleDohV6:
-    https:
-      uri: dns.google
-      ratelimit: 3000
-      timeout: 2
-      addr: '[2001:4860:4860::8888]'
+  #GoogleDohV6:
+  #  https:
+  #    uri: dns.google
+  #    ratelimit: 3000
+  #    timeout: 2
+  #    addr: '[2001:4860:4860::8888]'
 
-  CloudflareDohV6:
-    https:
-      uri: cloudflare-dns.com
-      ratelimit: 3000
-      timeout: 2
-      addr: '[2606:4700:4700::1001]'
+  #CloudflareDohV6:
+  #  https:
+  #    uri: cloudflare-dns.com
+  #    ratelimit: 3000
+  #    timeout: 2
+  #    addr: '[2606:4700:4700::1001]'
 
-  TencentDohV6:
-    https:
-      uri: https://doh.pub/dns-query
-      ratelimit: 3000
-      timeout: 2
-      addr: '[2402:4e00::]'
+  #TencentDohV6:
+  #  https:
+  #    uri: https://doh.pub/dns-query
+  #    ratelimit: 3000
+  #    timeout: 2
+  #    addr: '[2402:4e00::]'
 
 
-  ipv6:
-    hybrid:
-      - GoogleDohV6
-      - CloudflareDohV6
-      - TencentDohV6
+  #ipv6:
+  #  hybrid:
+  #    - GoogleDohV6
+  #    - CloudflareDohV6
+  #    - TencentDohV6
 
 
   #RubyfishDoH:
