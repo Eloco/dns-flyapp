@@ -7,10 +7,14 @@ table:
   start:
     if: "qtype([AAAA])"
     then:
-      # A list of actions is allowed here
-      - blackhole
-      # The next tag to go
+      - query:
+          tag: ipv6
+          cache_policy: standard
       - end
+      ## A list of actions is allowed here
+      #- blackhole
+      ## The next tag to go
+      #- end
     else:
       - blocklist
   # [*] ban all the blocklist.txt[dynamic generate from blocklist.url]
@@ -59,6 +63,35 @@ table:
       - end
 
 upstreams:
+
+  GoogleDohV6:
+    https:
+      uri: dns.google
+      ratelimit: 3000
+      timeout: 2
+      addr: '[2001:4860:4860::8888]'
+
+  CloudflareDohV6:
+    https:
+      uri: cloudflare-dns.com
+      ratelimit: 3000
+      timeout: 2
+      addr: '[2606:4700:4700::1001]'
+
+  TencentDohV6:
+    https:
+      uri: https://doh.pub/dns-query
+      ratelimit: 3000
+      timeout: 2
+      addr: '[2402:4e00::]'
+
+
+  ipv6:
+    hybrid:
+      - GoogleDohV6
+      - CloudflareDohV6
+      - TencentDohV6
+
 
   #RubyfishDoH:
   #  https:
