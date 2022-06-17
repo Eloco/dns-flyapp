@@ -5,20 +5,20 @@ address: 0.0.0.0:53
 table:
   # [*] handle ipv6
   start:
-    if: "qtype([AAAA])"
-    then:
-      - query:
-          tag: ipv6
-          cache_policy: standard
-      - end
-      ## A list of actions is allowed here
-      #- blackhole
-      ## The next tag to go
-      #- end
-    else:
-      - blocklist
+  #  if: "qtype([AAAA])"
+  #  then:
+  #    - query:
+  #        tag: ipv6
+  #        cache_policy: standard
+  #    - end
+  #    ## A list of actions is allowed here
+  #    #- blackhole
+  #    ## The next tag to go
+  #    #- end
+  #  else:
+  #    - blocklist
   # [*] ban all the blocklist.txt[dynamic generate from blocklist.url]
-  blocklist:
+  #blocklist:
     if: domain([file("./blocklist.txt")])
     then:
       - blackhole
