@@ -104,18 +104,16 @@ upstreams:
   AliDoH:
     https:
       uri: https://dns.alidns.com/dns-query
-      #proxy:  
       ratelimit: 3000
-      timeout: 10
+      timeout: 2
       addr: 223.6.6.6
 
 
   TencentDoH:
     https:
       uri: https://doh.pub/dns-query
-      #proxy:  
       ratelimit: 3000
-      timeout: 10
+      timeout: 2
       addr: 1.12.12.12
 
   #114DNS:
